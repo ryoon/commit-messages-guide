@@ -12,6 +12,7 @@ Potrebbe aiutarti a capire cos'è un commit, perché è importante scrivere buon
 - [Português](README_pt-BR.md)
 - [Deutsch](README_de-DE.md)
 - [Italiano](README_it-IT.md)
+- [日本語](README_ja-JP.md)
 
 ## Cos'è un "commit"?
 
