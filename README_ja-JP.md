@@ -18,11 +18,10 @@
 
 ## 「コミット」とは何か?
 
-簡単に言うと、コミットとはあなたのローカルリポジトリーに書かれたローカルファイルの_スナップショット_です。
+簡単に言うと、コミットとはあなたのローカルリポジトリーに書かれたローカルファイルの _スナップショット_ です。
 人々が考えているのとは異なり、[gitはファイルの差分のみを保持しているのではなく全てのファイルの全てのバージョンのファイルそのものを保持しています](https://git-scm.com/book/eo/v1/Ekkomenci-Git-Basics#Snapshots,-Not-Differences)。
 1つのコミットで以前と変更がないファイルについては、gitは既に保持している以前のバージョンの同一ファイルへのリンクを保持します。
 
-The image below shows how git stores data over time, in which each "Version" is a commit:
 下図は、gitが経時的にデータをどのように保持しているかを示しています。個々の「version」をコミットだと考えてください。
 
 ![](https://i.stack.imgur.com/AQ5TG.png)
@@ -202,7 +201,7 @@ cdcdcd Agora vai
 
 ### テンプレート
 
-これは[元々Tim Popeによって書かれた](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)テンプレートで、[_Pro Git Book_](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)収録されています。
+これは[元々Tim Popeによって書かれた](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)テンプレートで、[_Pro Git Book_](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)に収録されています。
 
 ```
 Summarize changes in around 50 characters or less
@@ -236,7 +235,6 @@ See also: #456, #789
 
 ## リベース対マージ
 
-This section is a **TL;DR** of Atlassian's excellent tutorial, ["Merging vs. Rebasing"](https://www.atlassian.com/git/tutorials/merging-vs-rebasing).
 このセクションは、Atlassianの優れたチュートリアルである["Merging vs. Rebasing"](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)をまとめたものです。
 
 ![](https://wac-cdn.atlassian.com/dam/jcr:01b0b04e-64f3-4659-af21-c4d86bc7cb0b/01.svg?cdnVersion=hq)
@@ -249,14 +247,12 @@ This section is a **TL;DR** of Atlassian's excellent tutorial, ["Merging vs. Reb
 
 ### マージ
 
-**TL;DR:** Creates a new commit, called (appropriately) a _merge commit_, with the differences between the two branches.
-**まとめ**: 適切には_マージコミット_と呼ばれる、2つのブランチの間の差分である新しいコミットを作成します。
+**まとめ**: 適切には _マージコミット_ と呼ばれる、2つのブランチの間の差分である新しいコミットを作成します。
 
 ![](https://wac-cdn.atlassian.com/dam/jcr:e229fef6-2c2f-4a4f-b270-e1e1baa94055/02.svg?cdnVersion=hq)
 
 ### なぜマージよりリベースを好む人々がいるのか?
 
-I particularly prefer to rebase over merge. The reasons include:
 私は特にマージよりリベースの方が良いと考えています。理由は以下の通りです。
 
 * リベースは「クリーン」な履歴を生成し、不必要なマージコミットを生成しない
@@ -325,16 +321,14 @@ pick 9b81c72 Add "Rebase vs Merge" section
 
 #### fixup
 
-Use it to clean up commits easily and without needing a more complex rebase.
 コミットを簡単に、もっと複雑なリベースを必要とせずに、クリーンナップするのを使います。
-[This article](http://fle.github.io/git-tip-keep-your-branch-clean-with-fixup-and-autosquash.html) has very good examples of how and when to do it.
-[この記事](http://fle.github.io/git-tip-keep-your-branch-clean-with-fixup-and-autosquash.html)はどのように、どういう
+[この記事](http://fle.github.io/git-tip-keep-your-branch-clean-with-fixup-and-autosquash.html)はどのように、どういう時に使うべきかのとても良い例を示しています。
 
 ### cherry-pick
 
-It is very useful to apply that commit you made on the wrong branch, without the need to code it again.
+間違って別のブランチでしてしまったコミットをコードを書き直すことなく適用させるのにとても便利です。
 
-Example:
+例:
 
 ```
 $ git cherry-pick 790ab21
