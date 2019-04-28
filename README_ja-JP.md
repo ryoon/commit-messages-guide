@@ -1,122 +1,126 @@
-# Commit messages guide
+# コミットメッセージガイド
 
-[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/RomuloOliveira)
+[![ありがとう!を言う!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/RomuloOliveira)
 
-A guide to understanding the importance of commit messages and how to write them well.
+コミットメッセージの重要性と良いコミットメッセージの書き方を理解するためのガイドです
+(訳注: 本日本語訳では、英語でコミットメッセージを書くことを想定します)
 
-It may help you to learn what a commit is, why it is important to write good messages, best practices and some tips to plan and (re)write a good commit history.
+コミットとは何か、良いコミットメッセージを書くことが重要であるのはなぜか、良いコミット履歴を計画し書く(書き直す)ための最良の方法とコツを学ぶのを手助けできるかもしれません。
 
-## Available languages
+## 各国語版
 
 - [English](README.md)
 - [Português](README_pt-BR.md)
 - [Deutsch](README_de-DE.md)
 - [Español](README_es-AR.md)
 - [Italiano](README_it-IT.md)
+- [日本語](README_ja-JP.md)
 
-## What is a "commit"?
+## 「コミット」とは何か?
 
-In simple terms, a commit is a _snapshot_ of your local files, written in your local repository.
-Contrary to what some people think, [git doesn't store only the difference between the files, it stores a full version of all files](https://git-scm.com/book/eo/v1/Ekkomenci-Git-Basics#Snapshots,-Not-Differences).
-For files that didn't change from one commit to another, git stores just a link to the previous identical file that is already stored.
+簡単に言うと、コミットとはあなたのローカルリポジトリーに書かれたローカルファイルの_スナップショット_です。
+人々が考えているのとは異なり、[gitはファイルの差分のみを保持しているのではなく全てのファイルの全てのバージョンのファイルそのものを保持しています](https://git-scm.com/book/eo/v1/Ekkomenci-Git-Basics#Snapshots,-Not-Differences)。
+1つのコミットで以前と変更がないファイルについては、gitは既に保持している以前のバージョンの同一ファイルへのリンクを保持します。
 
 The image below shows how git stores data over time, in which each "Version" is a commit:
+下図は、gitが経時的にデータをどのように保持しているかを示しています。個々の「version」をコミットだと考えてください。
 
 ![](https://i.stack.imgur.com/AQ5TG.png)
 
-## Why are commit messages important?
+## なぜコミットメッセージは重要なのか?
 
-- To speed up and streamline code reviews
-- To help in the understanding of a change
-- To explain "the whys" that cannot be described only with code
-- To help future maintainers figure out why and how changes were made, making troubleshooting and debugging easier
+- 素早く効率的にコードレビューをするため
+- 変更を理解するのを助けるため
+- コードのみでは説明できない「なぜ」を説明するため
+- 未来のメンテナーが、なぜどのように変更がされたのかを理解し、トラブル解決とデバッグを容易にできるようにするため
 
-To maximize those outcomes, we can use some good practices and standards described in the next section.
+これらの成果を最大化するために、次のセクションで説明する良い事例と標準を使うことができます。
 
-## Good practices
+## 良い事例
 
-These are some practices collected from my experiences, internet articles, and other guides. If you have others (or disagree with some) feel free to open a Pull Request and contribute.
+私の経験やインターネット上の記事、他のガイドから集めた良い事例があります。
+他に良い事例を知っていたり、賛成できないものがある場合には、気軽にプルリクエストを送って貢献してください。
 
-### Use imperative form
+### 命令形を使う
 
 ```
-# Good
+# 良い例
 Use InventoryBackendPool to retrieve inventory backend
 ```
 
 ```
-# Bad
+# 悪い例
 Used InventoryBackendPool to retrieve inventory backend
 ```
 
-_But why use the imperative form?_
+_しかし、なぜ命令法を使うべきなのでしょうか?_
 
-A commit message describes what the referenced change actually **does**, its effects, not what was done.
+コミットメッセージは、関連付けられる変更が実際に何を*する*のか、どんな効果を持つのかを説明するものであり、何がされたのかを説明するものではありません。
 
-[This excellent article from Chris Beams](https://chris.beams.io/posts/git-commit/) gives us a simple sentence that can be used to help us write better commit messages in imperative form:
-
-```
-If applied, this commit will <commit message>
-```
-
-Examples:
+[Chris Beamsによるこの優れた記事](https://chris.beams.io/posts/git-commit/)では、命令形でより良いコミットメッセージを書くのに助けとなるシンプルな例文が示されています。
 
 ```
-# Good
+If applied, this commit will <コミットメッセージ>
+```
+
+例:
+
+```
+# 良い例
 If applied, this commit will use InventoryBackendPool to retrieve inventory backend
 ```
 
 ```
-# Bad
+# 悪い例
 If applied, this commit will used InventoryBackendPool to retrieve inventory backend
 ```
 
-### Capitalize the first letter
+### 最初の文字を大文字にする
 
 ```
-# Good
+# 良い例
 Add `use` method to Credit model
 ```
 
 ```
-# Bad
+# 悪い例
 add `use` method to Credit model
 ```
 
-The reason that the first letter should be capitalized is to follow the grammar rule of using capital letters at the beginning of sentences.
+最初の文字を大文字にするのは、文の初めの文字は大文字にするという文法規則に従っています。
 
-The use of this practice may vary from person to person, team to team, or even from language to language.
-Capitalized or not, an important point is to stick to a single standard and follow it.
+これは人によりチームにより言語により異なります。
+大文字にするにしてもしないにしても、重要なのは1つの標準にこだわり従うことです。
 
-### Try to communicate what the change does without having to look at the source code
+### ソースコードを見ることなく変更を伝えられるようにする
 
 ```
-# Good
+# 良い例
 Add `use` method to Credit model
 
 ```
 
 ```
-# Bad
+# 悪い例
 Add `use` method
 ```
 
 ```
-# Good
+# 悪い例
 Increase left padding between textbox and layout frame
 ```
 
 ```
-# Bad
+# 悪い例
 Adjust css
 ```
 
-It is useful in many scenarios (e.g. multiple commits, several changes and refactors) to help reviewers understand what the committer was thinking.
+このことは、多くのシナリオ(例えば、複数のコミットやいくつかの変更、リファクタリング)で、コミッターが考えていたことをレビュアーが理解するのを助けます。
 
-### Use the message body to explain "why", "for what", "how" and additional details
+### 「なぜ」「何のために」「どのように」その他の詳細を説明するためにメッセージの本文を使う。
 
 ```
-# Good
+# 良い例
 Fix method name of InventoryBackend child classes
 
 Classes derived from InventoryBackend were not
@@ -127,7 +131,7 @@ incorrectly.
 ```
 
 ```
-# Good
+# 良い例
 Serialize and deserialize credits to json in Cart
 
 Convert the Credit instances to dict for two main reasons:
@@ -138,22 +142,21 @@ Convert the Credit instances to dict for two main reasons:
 ```
 
 ```
-# Good
+# 良い例
 Add `use` method to Credit
 
 Change from namedtuple to class because we need to
 setup a new attribute (in_use_amount) with a new value
 ```
 
-The subject and the body of the messages are separated by a blank line.
-Additional blank lines are considered as a part of the message body.
+メッセージの件名と本文は空行で区切ります。それ以上の空行はメッセージの本文の一部とみなされます。
 
-Characters like `-`, `*` and \` are elements that improve readability.
+`-`や`*`、\`といった文字は読みやすくするために使えます。
 
-### Avoid generic messages or messages without any context
+### 一般的なメッセージや文脈の分からないメッセージを避ける
 
 ```
-# Bad
+# 悪い例
 Fix this
 
 Fix stuff
@@ -165,40 +168,41 @@ Change stuff
 Adjust css
 ```
 
-### Limit the number of characters
+### 文字数を制限する
 
-[It's recommended](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines) to use a maximum of 50 characters for the subject and 72 for the body.
+件名は50文字、本文は1行につき72文字を上限とするのが[推奨されています](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines)。
 
-### Keep language consistency
+### 言語の一貫性を保つ
 
-For project owners: Choose a language and write all commit messages using that language. Ideally, it should match the code comments, default translation locale (for localized projects), etc.
+プロジェクトのオーナーへ: 言語を1つ選び、全てのコミットメッセージにその言語を使ってください。
+その言語がコード中のコメントやデフォルトの翻訳ロケール(ローカライズされたプロジェクトの場合)などとも一致している方が良いです。
 
-For contributors: Write your commit messages using the same language as the existing commit history.
+貢献者へ: 既に存在するコミット履歴の言語を使ってあなたのコミットメッセージを書いてください。
 
 ```
-# Good
+# 良い例
 ababab Add `use` method to Credit model
 efefef Use InventoryBackendPool to retrieve inventory backend
 bebebe Fix method name of InventoryBackend child classes
 ```
 
 ```
-# Good (Portuguese example)
+# 良い例 (ポルトガル語の例)
 ababab Adiciona o método `use` ao model Credit
 efefef Usa o InventoryBackendPool para recuperar o backend de estoque
 bebebe Corrige nome de método na classe InventoryBackend
 ```
 
 ```
-# Bad (mixes English and Portuguese)
+# 悪い例 (英語とポルトガル語が混在している)
 ababab Usa o InventoryBackendPool para recuperar o backend de estoque
 efefef Add `use` method to Credit model
 cdcdcd Agora vai
 ```
 
-### Template
+### テンプレート
 
-This is a template, [written originally by Tim Pope](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html), which appears in the [_Pro Git Book_](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project).
+これは[元々Tim Popeによって書かれた](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)テンプレートで、[_Pro Git Book_](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)収録されています。
 
 ```
 Summarize changes in around 50 characters or less
@@ -230,53 +234,57 @@ Resolves: #123
 See also: #456, #789
 ```
 
-## Rebase vs. Merge
+## リベース対マージ
 
 This section is a **TL;DR** of Atlassian's excellent tutorial, ["Merging vs. Rebasing"](https://www.atlassian.com/git/tutorials/merging-vs-rebasing).
+このセクションは、Atlassianの優れたチュートリアルである["Merging vs. Rebasing"](https://www.atlassian.com/git/tutorials/merging-vs-rebasing)をまとめたものです。
 
 ![](https://wac-cdn.atlassian.com/dam/jcr:01b0b04e-64f3-4659-af21-c4d86bc7cb0b/01.svg?cdnVersion=hq)
 
-### Rebase
+### リベース
 
-**TL;DR:** Applies your branch commits, one by one, upon the base branch, generating a new tree.
+**まとめ**: あなたのブランチのコミットを1つ1つベースのブランチに追加して、新しいツリーを生成します。
 
 ![](https://wac-cdn.atlassian.com/dam/jcr:5b153a22-38be-40d0-aec8-5f2fffc771e5/03.svg?cdnVersion=hq)
 
-### Merge
+### マージ
 
 **TL;DR:** Creates a new commit, called (appropriately) a _merge commit_, with the differences between the two branches.
+**まとめ**: 適切には_マージコミット_と呼ばれる、2つのブランチの間の差分である新しいコミットを作成します。
 
 ![](https://wac-cdn.atlassian.com/dam/jcr:e229fef6-2c2f-4a4f-b270-e1e1baa94055/02.svg?cdnVersion=hq)
 
-### Why do some people prefer to rebase over merge?
+### なぜマージよりリベースを好む人々がいるのか?
 
 I particularly prefer to rebase over merge. The reasons include:
+私は特にマージよりリベースの方が良いと考えています。理由は以下の通りです。
 
-* It generates a "clean" history, without unnecessary merge commits
-* _What you see is what you get_, i.e., in a code review all changes come from a specific and entitled commit, avoiding changes hidden in merge commits
-* More merges are resolved by the committer, and every merge change is in a commit with a proper message
-    * It's unusual to dig in and review merge commits, so avoiding them ensures all changes have a commit where they belong
+* リベースは「クリーン」な履歴を生成し、不必要なマージコミットを生成しない
+* 見たままが得られる、つまり、コードレビューで全ての変更が特定のコミットと関連付けられ、マージコミットに変更が隠れるのを防げる
+* コミッターによりマージがされるにつれて、それぞれのマージの変更は適切なメッセージを持った1つのコミットにまとまってしまう
+    * マージコミットを掘り起こしたり、レビューしたりすることは通常やるべきことではない。それを避けるために、全ての変更はそれぞれのコミットを持つようにする
 
-### When to squash
+### スカッシュすべき時
 
-"Squashing" is the process of taking a series of commits and condensing them into a single commit.
+「スカッシュ」とは、一連のコミットを1つのコミットまとめるプロセスです。
 
-It's useful in several situations, e.g.:
+これは、以下の例のような状況では一般的です。
 
-- Reducing commits with little or no context (typo corrections, formatting, forgotten stuff)
-- Joining separate changes that make more sense when applied together
-- Rewriting _work in progress_ commits
+- 文脈が乏しいまたはないコミットをなくす (誤字を訂正する、フォーマットを整える、忘れていたものを含める)
+- 一緒に適用された方がより意味が明確になる分かれた変更をまとめる
+- _作業中_のコミットを書き直す
 
-### When to avoid rebase or squash?
+### リベースやスカッシュを避けるべき時は?
 
-Avoid rebase and squash in public commits or in shared branches where multiple people work on.
-Rebase and squash rewrite history and overwrite existing commits, doing it on commits that are on shared branches (i.e., commits pushed to a remote repository or that comes from others branches) can cause confusion and people may lose their changes (both locally and remotely) because of divergent trees and conflicts.
+リベースやスカッシュは、公開されたコミットまたは複数の人が作業している共有されたブランチでは避けてください。
+リベースやスカッシュは履歴を書き換え、既存のコミットを上書きします。
+これを共有されたブランチで行うと混乱をまねき(つまり、コミットはリモートリポジトリーにプッシュされるし、リモートリポジトリーは他の人のブランチから生成される)、ツリーの状態が一貫性を失い競合が発生することで、他の人が自分の変更を(ローカルとリモートの両方で)失うかもしれません。
 
-## Useful git commands
+## 有用なgitコマンド
 
 ### rebase -i
 
-Use it to squash commits, edit messages, rewrite/delete/reorder commits, etc.
+コミットをスカッシュしたり、メッセージを編集したり、コミットを書き換えたり、削除したり、並べ替えるなどをするのに使います。
 
 ```
 pick 002a7cc Improve description and update document title
@@ -318,7 +326,9 @@ pick 9b81c72 Add "Rebase vs Merge" section
 #### fixup
 
 Use it to clean up commits easily and without needing a more complex rebase.
+コミットを簡単に、もっと複雑なリベースを必要とせずに、クリーンナップするのを使います。
 [This article](http://fle.github.io/git-tip-keep-your-branch-clean-with-fixup-and-autosquash.html) has very good examples of how and when to do it.
+[この記事](http://fle.github.io/git-tip-keep-your-branch-clean-with-fixup-and-autosquash.html)はどのように、どういう
 
 ### cherry-pick
 
@@ -335,7 +345,7 @@ $ git cherry-pick 790ab21
 
 ### add/checkout/reset [--patch | -p]
 
-Let's say we have the following diff:
+以下のような差分があるとします。
 
 ```diff
 diff --git a/README.md b/README.md
@@ -364,15 +374,15 @@ index 7b45277..6b1993c 100644
 +- [A Note About Git Commit Messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
 ```
 
-We can use `git add -p` to add only the patches we want to, without the need to change the code that is already written.
-It's useful to split a big change into smaller commits or to reset/checkout specific changes.
+`git add -p`を使うことで、必要なパッチのみ追加することができ、既に書かれたコードを変更する必要はありません。
+これは大きな変更をより小さなコミットに分割するのに役立ちますし、特定の変更をreset/checkoutするのにも役立ちます。
 
 ```
 Stage this hunk [y,n,q,a,d,/,j,J,g,s,e,?]? s
 Split into 2 hunks.
 ```
 
-#### hunk 1
+#### 部分1
 
 ```diff
 @@ -186,7 +186,6 @@
@@ -386,7 +396,7 @@ Split into 2 hunks.
 Stage this hunk [y,n,q,a,d,/,j,J,g,e,?]?
 ```
 
-#### hunk 2
+#### 部分2
 
 ```diff
 @@ -190,6 +189,10 @@
@@ -405,7 +415,7 @@ Stage this hunk [y,n,q,a,d,/,K,j,J,g,e,?]?
 
 ```
 
-#### hunk 3
+#### 部分3
 
 ```diff
 @@ -202,3 +205,4 @@ Any kind of help would be appreciated. Example of topics that you can help me wi
@@ -415,24 +425,24 @@ Stage this hunk [y,n,q,a,d,/,K,j,J,g,e,?]?
 +- [A Note About Git Commit Messages](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
 ```
 
-## Other interesting stuff
+## その他の有用なこと
 
 https://whatthecommit.com/
 
-## Like it?
+## 気に入りましたか?
 
-[Say thanks!](https://saythanks.io/to/RomuloOliveira)
+[ありがとう!を言う](https://saythanks.io/to/RomuloOliveira)
 
-## Contributing
+## 貢献する
 
-Any kind of help would be appreciated. Example of topics that you can help me with:
+どんな種類の手助けも歓迎します。例えば以下の事項で手助けしてください。
 
-- Grammar and spelling corrections
-- Translation to other languages
-- Improvement of source referencing
-- Incorrect or incomplete information
+- 文法と綴りの訂正
+- 他の言語への翻訳
+- 他の情報源への参照の改善
+- 間違っていたり不完全であったりする情報の訂正
 
-## Inspirations, sources and further reading
+## インスピレーションや情報源、次に読むべきもの
 
 - [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)
 - [Pro Git Book - Commit guidelines](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project#_commit_guidelines)
